@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>LINEのご案内 | 森ノ音（デモ）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="container" style="padding-bottom:48px">
+  <div class="page-head">
+    <span class="eyebrow">LINE OFFICIAL ACCOUNT</span>
+    <h1>LINEで届くメッセージ</h1>
+    <p class="lead">友だち追加から滞在後まで、決まったタイミングで自動でお送りします。<br>下のボタンで、順番にお見せします。</p>
+    <p class="small">画面はイメージです。LINE公式アカウントの機能で組み立てる想定です（ロゴ・配色は実物と異なります）。</p>
+  </div>
+
+  <div class="flow-layout">
+    <div>
+      <div class="phone" aria-label="スマートフォンの画面イメージ">
+        <div class="screen">
+          <div class="chat-head"><span class="av" aria-hidden="true"></span><span>森ノ音 一棟貸しの宿（架空）</span></div>
+          <div class="chat-body" id="chat" aria-live="polite"></div>
+          <div class="chat-foot">
+            <button class="btn btn-primary" type="button" id="nextMsg">次のメッセージ</button>
+            <button class="btn btn-ghost" type="button" id="showAll">すべて表示</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2 style="font-size:1.2rem">自動で送る5つの場面</h2>
+      <ol class="flow-steps" id="flowSteps">
+        <li data-s="0"><span class="when">友だち追加したとき</span><br>あいさつと、予約・相談の入口をお送りします。</li>
+        <li data-s="1"><span class="when">予約が完了したとき</span><br>予約内容の確認をお送りします。メールと同じ内容です。</li>
+        <li data-s="2"><span class="when">3日前・前日</span><br>道順のご案内と、リモートチェックインのリンクをお送りします。</li>
+        <li data-s="3"><span class="when">滞在中</span><br>Wi-Fi・チェックアウト・ごみ・駐車場など、よくある質問に自動で答えます。</li>
+        <li data-s="4"><span class="when">チェックアウト後</span><br>お礼と、次回のご案内をお送りします。</li>
+      </ol>
+      <div class="info">
+        <strong>スタッフの手間を減らす工夫</strong>
+        <p class="small" style="margin:6px 0 0">決まった質問は自動で答え、答えられない質問だけスタッフに知らせます。<br>リモートチェックインは、お使いのサービスのリンクをそのまま案内できます。</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/common.js"></script>
+<script>
+(function () {
+  "use strict";
+  // s = 場面番号, t = 種類（bot/user/sys/quick）
+  var MSGS = [
+    { s: 0, t: "sys", x: "友だち追加しました" },
+    { s: 0, t: "bot", x: "友だち追加ありがとうございます。森ノ音です。<br>空室の確認やご相談は、下のメニューからどうぞ。", b: "空室を見て予約する" },
+    { s: 0, t: "quick", x: ["空室を見る", "料金を知りたい", "質問する"] },
+    { s: 1, t: "sys", x: "4月9日（金）" },
+    { s: 1, t: "bot", x: "ご予約ありがとうございます。<br><br>予約番号：DEMO-12345<br>日程：4月16日（金）〜17日（土）1泊<br>人数：大人4名<br>お支払い：済み", b: "予約内容を見る" },
+    { s: 2, t: "sys", x: "4月13日（火）3日前" },
+    { s: 2, t: "bot", x: "ご到着まであと3日です。<br>道順と駐車場の場所をお送りします。<br>近くのスーパーは車で10分です。", b: "道順を見る" },
+    { s: 2, t: "sys", x: "4月15日（木）前日" },
+    { s: 2, t: "bot", x: "明日のご到着に向けて、チェックインの手続きをお願いします。<br>身分証と宿泊者名簿を登録すると、玄関の暗証番号が届きます。", b: "リモートチェックインへ進む" },
+    { s: 3, t: "sys", x: "4月16日（金）滞在中" },
+    { s: 3, t: "user", x: "Wi-Fiのパスワードは？" },
+    { s: 3, t: "bot", x: "Wi-Fiの情報です。<br>ネットワーク名：morinone-guest<br>パスワード：（デモのため非表示）" },
+    { s: 3, t: "user", x: "チェックアウトは何時？" },
+    { s: 3, t: "bot", x: "チェックアウトは10:00です。<br>鍵の返却は不要です。玄関を閉めると自動で施錠されます。" },
+    { s: 3, t: "user", x: "ごみはどうすればいい？" },
+    { s: 3, t: "bot", x: "キッチン横の3つの箱に分けてください。<br>燃える・プラ・びん缶です。そのまま置いてお帰りください。" },
+    { s: 3, t: "user", x: "車は何台停められる？" },
+    { s: 3, t: "bot", x: "敷地内に3台まで無料で停められます。<br>4台目からは近くの町営駐車場をご案内します。" },
+    { s: 3, t: "quick", x: ["Wi-Fi", "チェックアウト", "ごみ", "駐車場", "スタッフに連絡"] },
+    { s: 4, t: "sys", x: "4月17日（土）チェックアウト後" },
+    { s: 4, t: "bot", x: "ご滞在ありがとうございました。<br>またの森ノ音をお待ちしています。<br>次回、公式サイトからのご予約で使える特典をお送りします。", b: "感想を送る" }
+  ];
+  var i = 0, chat = document.getElementById("chat");
+  var steps = document.querySelectorAll("#flowSteps li");
+
+  function render(m) {
+    var el;
+    if (m.t === "quick") {
+      el = document.createElement("div"); el.className = "quick";
+      el.innerHTML = m.x.map(function (q) { return "<span>" + q + "</span>"; }).join("");
+    } else if (m.t === "sys") {
+      el = document.createElement("div"); el.className = "sys"; el.textContent = m.x;
+    } else {
+      el = document.createElement("div"); el.className = "msg " + m.t;
+      el.innerHTML = m.x + (m.b ? '<span class="mbtn">' + m.b + "</span>" : "") +
+        '<span class="stamp">' + (m.t === "bot" ? "自動送信" : "お客様") + "</span>";
+    }
+    chat.appendChild(el);
+    steps.forEach(function (li) { li.classList.toggle("on", +li.dataset.s <= m.s); });
+    chat.scrollTop = chat.scrollHeight;
+  }
+  function next() {
+    if (i < MSGS.length) render(MSGS[i++]);
+    if (i >= MSGS.length) { document.getElementById("nextMsg").textContent = "最初から"; }
+  }
+  document.getElementById("nextMsg").addEventListener("click", function () {
+    if (i >= MSGS.length) { chat.innerHTML = ""; i = 0; this.textContent = "次のメッセージ"; steps.forEach(function (l) { l.classList.remove("on"); }); }
+    next();
+    // 場面の区切りまでまとめて進める（タップ回数を減らす）
+    while (i < MSGS.length && MSGS[i].t !== "sys" && MSGS[i - 1].t === "sys") next();
+  });
+  document.getElementById("showAll").addEventListener("click", function () { while (i < MSGS.length) next(); });
+  next(); next();
+})();
+</script>
+</body>
+</html>

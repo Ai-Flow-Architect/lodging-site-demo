@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>管理画面のイメージ | 森ノ音（デモ）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="container" style="padding-bottom:48px">
+  <div class="page-head">
+    <span class="eyebrow">FOR STAFF</span>
+    <h1>管理画面のイメージ</h1>
+    <p class="lead">スタッフの方が、コードを書かずに写真・文章・料金・よくある質問・ブログを更新するときの画面イメージです。</p>
+  </div>
+
+  <p class="notice" style="margin-bottom:12px">これは操作感を伝えるためのイメージです。<br><span style="font-weight:400;font-size:.88rem">ボタンを押しても、実際のサイトは変わりません。</span></p>
+  <p class="small">実際に使う管理ツールは、運用のしかたや担当者の人数に合わせて選びます。画面の見た目は、選んだツールによって変わります。</p>
+
+  <div class="admin-shell" style="margin-top:16px">
+    <div class="admin-top"><span>森ノ音 管理画面（イメージ）</span><span>ログイン中：スタッフA</span></div>
+    <div class="admin-tabs" role="tablist">
+      <button type="button" role="tab" class="on" data-p="price">料金</button>
+      <button type="button" role="tab" data-p="photo">写真</button>
+      <button type="button" role="tab" data-p="faq">よくある質問</button>
+      <button type="button" role="tab" data-p="blog">ブログ</button>
+    </div>
+
+    <!-- 料金 -->
+    <div class="admin-pane" id="p-price" role="tabpanel">
+      <h3>料金を変える</h3>
+      <p class="small">金額を書きかえて「保存」を押すだけです。</p>
+      <div class="admin-row"><span class="name">1棟の基本料金（平日）</span><span><input inputmode="numeric" value="38000" aria-label="平日の基本料金"> 円</span></div>
+      <div class="admin-row"><span class="name">1棟の基本料金（休前日）</span><span><input inputmode="numeric" value="52000" aria-label="休前日の基本料金"> 円</span></div>
+      <div class="admin-row"><span class="name">大人 1名あたり</span><span><input inputmode="numeric" value="6000" aria-label="大人1名あたり"> 円</span></div>
+      <div class="admin-row"><span class="name">年末年始などの特別料金</span><span class="small">カレンダーで日付を選んで設定</span></div>
+      <button class="btn btn-primary" type="button" data-toast="料金を保存しました（イメージ）" style="margin-top:14px">保存</button>
+    </div>
+
+    <!-- 写真 -->
+    <div class="admin-pane" id="p-photo" role="tabpanel" hidden>
+      <h3>写真を差しかえる</h3>
+      <p class="small">差しかえたい写真をタップして、新しい写真を選びます。いまは仮の画像が入っています。</p>
+      <div class="photo-grid">
+        <div class="ph" data-toast="写真を選ぶ画面が開きます（イメージ）"><span>リビング（仮）</span></div>
+        <div class="ph p2" data-toast="写真を選ぶ画面が開きます（イメージ）"><span>寝室（仮）</span></div>
+        <div class="ph p3" data-toast="写真を選ぶ画面が開きます（イメージ）"><span>キッチン（仮）</span></div>
+        <div class="ph p4" data-toast="写真を選ぶ画面が開きます（イメージ）"><span>お風呂（仮）</span></div>
+      </div>
+      <div class="drop">ここに写真をドラッグ、またはタップして選ぶ<br><span class="small">ロゴも同じ方法で差しかえられます</span></div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="admin-pane" id="p-faq" role="tabpanel" hidden>
+      <h3>よくある質問を追加する</h3>
+      <div class="form-row"><label for="fq">質問</label><input id="fq" value="花火はできますか？"></div>
+      <div class="form-row"><label for="fa">答え</label><textarea id="fa">手持ち花火はテラスでできます。21時までにお願いします。</textarea></div>
+      <label class="small"><input type="checkbox" checked> LINEの自動回答にも使う</label>
+      <div style="margin-top:12px"><button class="btn btn-primary" type="button" id="addFaq">追加する</button></div>
+      <p class="small" style="margin-top:14px">サイトでの見え方：</p>
+      <div class="preview-mini" id="faqPrev"><strong>Q. 花火はできますか？</strong><br>手持ち花火はテラスでできます。21時までにお願いします。</div>
+    </div>
+
+    <!-- ブログ -->
+    <div class="admin-pane" id="p-blog" role="tabpanel" hidden>
+      <h3>ブログを書く</h3>
+      <div class="form-row"><label for="bt">タイトル</label><input id="bt" value="春の山菜とりに行ってきました"></div>
+      <div class="form-row"><label for="bb">本文</label><textarea id="bb">宿から歩いて5分の小道で、ふきのとうを見つけました。</textarea></div>
+      <div class="form-row"><label for="bc">分類</label><select id="bc"><option>ブログ</option><option>お知らせ</option><option>周辺案内</option></select></div>
+      <div class="grid grid-2">
+        <button class="btn btn-ghost" type="button" data-toast="下書きを保存しました（イメージ）">下書き保存</button>
+        <button class="btn btn-primary" type="button" data-toast="公開しました（イメージ）">公開する</button>
+      </div>
+    </div>
+  </div>
+
+  <section style="margin-top:32px">
+    <h2 style="font-size:1.2rem">スタッフができること</h2>
+    <div class="grid grid-2">
+      <div class="info"><strong>写真・ロゴ</strong><br><span class="small">仮の画像から本番の写真へ、いつでも差しかえられます。</span></div>
+      <div class="info"><strong>文章・料金</strong><br><span class="small">説明文や料金を、ワープロのように書きかえられます。</span></div>
+      <div class="info"><strong>よくある質問</strong><br><span class="small">追加した質問は、LINEの自動回答にも使えます。</span></div>
+      <div class="info"><strong>お知らせ・ブログ</strong><br><span class="small">スマホからでも記事を書いて公開できます。</span></div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/common.js"></script>
+<script>
+(function () {
+  "use strict";
+  var toast = document.createElement("div");
+  toast.className = "toast"; toast.setAttribute("role", "status");
+  document.body.appendChild(toast);
+  function show(t) { toast.textContent = t; toast.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(function () { toast.classList.remove("show"); }, 1800); }
+
+  document.querySelectorAll(".admin-tabs button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll(".admin-tabs button").forEach(function (x) { x.classList.toggle("on", x === b); });
+      document.querySelectorAll(".admin-pane").forEach(function (p) { p.hidden = p.id !== "p-" + b.dataset.p; });
+    });
+  });
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-toast]");
+    if (t) show(t.dataset.toast);
+  });
+  function esc(s) { return s.replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  document.getElementById("addFaq").addEventListener("click", function () {
+    document.getElementById("faqPrev").innerHTML = "<strong>Q. " + esc(document.getElementById("fq").value) + "</strong><br>" + esc(document.getElementById("fa").value);
+    show("よくある質問に追加しました（イメージ）");
+  });
+})();
+</script>
+</body>
+</html>

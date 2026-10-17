@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ご予約 | 森ノ音（デモ）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+
+<main class="container" style="max-width:760px;padding-bottom:48px">
+  <div class="page-head">
+    <span class="eyebrow">RESERVATION</span>
+    <h1>公式サイトで予約する</h1>
+    <p class="lead">3つのステップで予約できます。お支払いもこのページで完了します。</p>
+  </div>
+
+  <ol class="steps" id="steps">
+    <li class="active">1. 日程・人数</li>
+    <li>2. プラン・料金</li>
+    <li>3. お支払い</li>
+  </ol>
+
+  <!-- STEP 1 -->
+  <section class="panel" id="step1" aria-labelledby="s1h">
+    <h2 id="s1h" style="font-size:1.2rem">日程と人数を選ぶ</h2>
+    <p class="small">チェックイン日 → チェックアウト日の順にタップしてください。</p>
+    <div class="cal-head">
+      <button type="button" id="prevM" aria-label="前の月">‹</button>
+      <strong id="calTitle"></strong>
+      <button type="button" id="nextM" aria-label="次の月">›</button>
+    </div>
+    <div class="cal" id="cal"></div>
+    <div class="legend"><span>空室（金額は1棟の基本料金）</span><span class="l-full">満室</span><span class="l-sel">選択中</span></div>
+
+    <div class="summary-box" style="margin-top:14px" id="dateSummary">日程を選んでください</div>
+
+    <div class="form-2" style="margin-top:14px">
+      <div class="form-row"><label for="adults">大人</label>
+        <select id="adults"></select></div>
+      <div class="form-row"><label for="kids">小学生</label>
+        <select id="kids"></select></div>
+    </div>
+    <div class="form-row"><label for="infants">未就学児（無料）</label>
+      <select id="infants"></select></div>
+    <p class="small">大人と小学生は合わせて8名までです。</p>
+    <button class="btn btn-primary btn-block" id="to2" type="button" disabled>プランと料金を確認する</button>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="panel" id="step2" hidden aria-labelledby="s2h">
+    <h2 id="s2h" style="font-size:1.2rem">プランと料金を確認する</h2>
+    <label class="plan-opt"><input type="radio" name="plan" value="0" checked>
+      <span><strong>素泊まりプラン</strong><br><span class="small">食事なし。キッチンは自由に使えます。</span></span></label>
+    <label class="plan-opt"><input type="radio" name="plan" value="2000">
+      <span><strong>朝食セット付きプラン</strong>（1名 +2,000円）<br><span class="small">地元のパンと卵、野菜を冷蔵庫にご用意します。</span></span></label>
+    <label class="plan-opt"><input type="radio" name="plan" value="4500">
+      <span><strong>BBQ食材セット付きプラン</strong>（1名 +4,500円）<br><span class="small">肉・野菜・炭をテラスにご用意します。</span></span></label>
+
+    <div class="summary-box" style="margin-top:12px">
+      <dl id="priceList"></dl>
+      <div class="total"><span>合計（税込）</span><span id="totalPrice">0円</span></div>
+    </div>
+    <p class="small">金額はデモ用の架空の数字です。</p>
+    <div class="grid grid-2">
+      <button class="btn btn-ghost" type="button" data-back="1">日程に戻る</button>
+      <button class="btn btn-primary" type="button" id="to3">お支払いへ進む</button>
+    </div>
+  </section>
+
+  <!-- STEP 3 -->
+  <section class="panel" id="step3" hidden aria-labelledby="s3h">
+    <h2 id="s3h" style="font-size:1.2rem">お客様情報とお支払い</h2>
+    <p class="notice">これはデモです。実際の決済は行われません。<br><span style="font-weight:400;font-size:.88rem">カード番号などは入力しないでください。</span></p>
+    <form id="payForm" style="margin-top:16px" novalidate>
+      <div class="form-row"><label for="nm">代表者のお名前</label><input id="nm" autocomplete="off" placeholder="例）森野 しずく"></div>
+      <div class="form-row"><label for="em">メールアドレス</label><input id="em" type="email" autocomplete="off" placeholder="例）demo@example.invalid"></div>
+      <div class="form-row"><label for="tel">電話番号</label><input id="tel" type="tel" autocomplete="off" placeholder="例）000-0000-0000"></div>
+      <div class="form-row"><label for="card">カード番号（デモのため入力できません）</label><input id="card" disabled value="0000 0000 0000 0000"></div>
+      <div class="form-2">
+        <div class="form-row"><label for="exp">有効期限</label><input id="exp" disabled value="00 / 00"></div>
+        <div class="form-row"><label for="cvc">セキュリティコード</label><input id="cvc" disabled value="000"></div>
+      </div>
+      <div class="summary-box" style="margin-bottom:14px"><div class="total" style="border:0;margin:0;padding:0"><span>お支払い金額</span><span id="payTotal">0円</span></div></div>
+      <div class="grid grid-2">
+        <button class="btn btn-ghost" type="button" data-back="2">料金に戻る</button>
+        <button class="btn btn-primary" type="submit">予約する（デモ）</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- 完了 -->
+  <section class="panel" id="done" hidden aria-labelledby="dh">
+    <span class="badge-label">デモ</span>
+    <h2 id="dh" style="font-size:1.3rem;margin-top:8px">ご予約を受け付けました</h2>
+    <p>予約番号 <strong id="resNo"></strong>（架空）</p>
+    <div class="summary-box" id="doneSummary" style="margin-bottom:18px"></div>
+    <h3>このあとの流れ</h3>
+    <ul class="timeline">
+      <li><span class="dot">1</span><strong>すぐに</strong>：予約確認メールが届きます。</li>
+      <li><span class="dot">2</span><strong>すぐに</strong>：LINEにも予約内容をお送りします（友だち追加済みの場合）。</li>
+      <li><span class="dot">3</span><strong>3日前</strong>：持ち物と道順のリマインドをお送りします。</li>
+      <li><span class="dot">4</span><strong>前日</strong>：リモートチェックインのリンクをお送りします。身分証と宿泊者名簿を登録してください。</li>
+      <li><span class="dot">5</span><strong>当日</strong>：玄関の暗証番号で入室。滞在中の質問はLINEで自動回答します。</li>
+    </ul>
+    <p class="notice" style="margin-top:12px">これはデモです。実際の予約・決済・メール送信は行われていません。</p>
+    <div class="grid grid-2" style="margin-top:16px">
+      <a class="btn btn-line" href="line-flow.html">LINEで届く内容を見る</a>
+      <a class="btn btn-ghost" href="index.html">トップへ戻る</a>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="assets/common.js"></script>
+<script src="assets/booking.js"></script>
+</body>
+</html>
