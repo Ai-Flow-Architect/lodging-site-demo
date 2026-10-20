@@ -312,3 +312,110 @@ textarea { width: 100%; min-height: 90px; border: 1px solid var(--line); border-
 /* カレンダーの日付と料金を読みやすく（2026-10-17 採点の指摘） */
 .cal button.day { font-size: 1rem; }
 .cal button.day small { font-size: .75rem; }
+
+/* ============================================================
+   2026-10-20 高級感の型：白とほぼ黒の帯を交互に・写真は横幅いっぱい
+   （参考にした型＝別荘ブランドの公式サイト。色・余白・文字の扱いだけを踏襲し、素材は使わない）
+   ============================================================ */
+:root {
+  --bg: #f5f5f7; --bg-alt: #ededf0; --paper: #ffffff;
+  --ink: #111113; --ink-soft: #5f6064; --line: #e2e2e6;
+  --black: #0b0b0d; --on-black: #f2f2f2; --on-black-soft: #a9a9ae;
+  --wood: #8e8e93; --wood-dark: #6b6b70;
+  --moss: #1f3a2b; --moss-dark: #142a1e;
+  --radius: 10px;
+}
+body { background: #fff; letter-spacing: .04em; }
+h1, h2, h3, .brand .name { font-family: "Noto Sans JP", system-ui, sans-serif; font-weight: 700; }
+h2 { font-size: clamp(1.4rem, 3.4vw, 2rem); letter-spacing: .06em; }
+.section { padding: clamp(64px, 10vw, 120px) 0; }
+.eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .24em; color: #8e8e93; margin-bottom: 1em; }
+.lead { color: var(--ink-soft); }
+
+/* ヘッダー＝すりガラス */
+.site-header { background: rgba(236, 237, 240, .72); backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4); border-bottom: 0; }
+.site-nav a { font-weight: 700; font-size: .88rem; }
+.site-nav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--ink); }
+.nav-toggle { background: rgba(255,255,255,.7); border-color: transparent; }
+.brand .mark circle { fill: var(--ink); }
+
+/* ヒーロー＝全画面の写真に大きな見出し */
+.hero { min-height: 100svh; align-items: center; justify-content: center; text-align: center;
+  background: linear-gradient(180deg, rgba(0,0,0,.25) 0%, rgba(0,0,0,.15) 40%, rgba(0,0,0,.65) 100%),
+    url(img/hero.jpg) center 45% / cover no-repeat, var(--black); margin-top: -60px; }
+.hero .inner { padding-top: 120px; }
+.hero h1 { font-size: clamp(2rem, 6.4vw, 4rem); letter-spacing: .1em; font-weight: 700; }
+.hero p { margin-left: auto; margin-right: auto; }
+.hero .placeholder-tag { background: rgba(255,255,255,.16); backdrop-filter: blur(6px); }
+
+/* 黒の帯 */
+.section.dark { background: var(--black); color: var(--on-black); }
+.section.dark h2, .section.dark h3 { color: #fff; }
+.section.dark .eyebrow { color: var(--on-black-soft); }
+.section.dark .lead, .section.dark .small, .section.dark p { color: var(--on-black-soft); }
+.section.dark a { color: #fff; }
+.section.center { text-align: center; }
+.section.center .lead { max-width: 40em; margin: 0 auto; }
+.section.dark .info { background: transparent; border-left: 0; border-top: 1px solid #2a2a2e; border-radius: 0; padding: 22px 4px 0; text-align: left; }
+.section.dark .info strong { color: #fff; font-size: 1.02rem; }
+.section.dark .table-wrap { border: 0; border-radius: 0; }
+.section.dark .price-table { background: transparent; }
+.section.dark .price-table th, .section.dark .price-table td { background: transparent; color: var(--on-black); border-bottom: 1px solid #2a2a2e; padding: 16px 4px; }
+.section.dark .price-table th { color: var(--on-black-soft); font-weight: 400; }
+.section.dark details.faq { background: transparent; border: 0; border-bottom: 1px solid #2a2a2e; border-radius: 0; margin: 0; }
+.section.dark details.faq summary { color: #fff; padding: 20px 40px 20px 0; }
+.section.dark details.faq summary::after { color: var(--on-black-soft); right: 4px; }
+.section.dark details.faq p { padding: 0 0 20px; }
+
+/* カード＝枠なし・角の丸い写真の下に文字 */
+.card { background: transparent; border: 0; border-radius: 0; }
+.card .ph { border-radius: var(--radius); overflow: hidden; }
+.card .body { padding: 14px 2px 6px; }
+.card-en { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .18em; color: #8e8e93; margin-bottom: 2px; }
+.card h3 { font-size: 1.02rem; margin-bottom: .3em; }
+.grid-3 { gap: 28px 24px; }
+.card:hover .ph { transform: none; filter: brightness(1.06); }
+.card .ph { transition: filter .4s ease; }
+
+/* 横幅いっぱいの写真の帯 */
+.band { position: relative; min-height: 72vh; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55)), url(img/terrace.jpg) center / cover no-repeat, var(--black); }
+.band-inner { padding: 80px var(--gutter); max-width: 900px; }
+.band h2 { font-size: clamp(1.7rem, 5vw, 3rem); letter-spacing: .1em; color: #fff; }
+.band p { color: #e6e6e6; }
+.section.dark .btn-light { color: var(--ink); }
+
+/* ボタン＝丸い形・帯の色で白黒を切り替え */
+.btn-primary { background: var(--ink); color: #fff; }
+.btn-primary:hover { background: #2b2b2f; }
+.btn-light { background: #fff; color: var(--ink); }
+.btn-light:hover { background: #e9e9ec; }
+.btn-ghost { border-color: var(--ink); }
+.sticky-cta .btn-primary { background: var(--moss); }
+.sticky-cta .btn-primary:hover { background: var(--moss-dark); }
+.link-light { text-decoration: none; border-bottom: 1px solid currentColor; }
+
+/* お知らせ・地図・タグ */
+.news-list li { border-bottom-color: var(--line); padding: 18px 0; }
+.news-list time { color: #8e8e93; }
+.tag { background: var(--bg); color: var(--ink-soft); }
+.map-ph { background: repeating-linear-gradient(0deg, transparent 0 38px, rgba(0,0,0,.05) 38px 39px), repeating-linear-gradient(90deg, transparent 0 38px, rgba(0,0,0,.05) 38px 39px), var(--bg); border-color: var(--line); }
+.map-ph path { stroke: #b9b9be; } .map-ph circle { fill: var(--ink); } .map-ph text { fill: var(--ink); }
+
+/* フッター＝ほぼ黒 */
+.site-footer { background: var(--black); color: var(--on-black-soft); }
+.site-footer a, .site-footer strong { color: var(--on-black); }
+.site-footer .note { border-top-color: #2a2a2e; color: var(--on-black-soft); }
+.demo-ribbon { background: #1c1c1f; color: #d9d9dc; }
+
+/* 下層ページ（予約・LINE・管理画面）も同じ色に */
+.steps li.active, .cal button.day.sel, .timeline .dot, .legend .l-sel::before { background: var(--ink); border-color: var(--ink); }
+.cal button.day small { color: var(--ink-soft); }
+.cal button.day.in-range { background: #e6e6ea; border-color: #cfcfd4; }
+.cal button.day.full { background: #f0f0f2; color: #9a9a9f; }
+.admin-top { background: var(--black); }
+.admin-tabs button.on { color: var(--ink); border-bottom-color: var(--ink); }
+.flow-steps li.on { border-color: var(--ink); }
+.flow-steps .when { color: var(--ink-soft); }
+.drop { border-color: #b9b9be; color: var(--ink-soft); }
+.toast { background: var(--black); }
