@@ -321,7 +321,7 @@ textarea { width: 100%; min-height: 90px; border: 1px solid var(--line); border-
   --bg: #f5f5f7; --bg-alt: #ededf0; --paper: #ffffff;
   --ink: #111113; --ink-soft: #5f6064; --line: #e2e2e6;
   --black: #0b0b0d; --on-black: #f2f2f2; --on-black-soft: #a9a9ae;
-  --wood: #8e8e93; --wood-dark: #6b6b70;
+  --wood: #6b6b70; --wood-dark: #6b6b70;
   --moss: #1f3a2b; --moss-dark: #142a1e;
   --radius: 10px;
 }
@@ -329,7 +329,7 @@ body { background: #fff; letter-spacing: .04em; }
 h1, h2, h3, .brand .name { font-family: "Noto Sans JP", system-ui, sans-serif; font-weight: 700; }
 h2 { font-size: clamp(1.4rem, 3.4vw, 2rem); letter-spacing: .06em; }
 .section { padding: clamp(64px, 10vw, 120px) 0; }
-.eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .24em; color: #8e8e93; margin-bottom: 1em; }
+.eyebrow { font-size: .78rem; font-weight: 700; letter-spacing: .24em; color: #6b6b70; margin-bottom: 1em; }
 .lead { color: var(--ink-soft); }
 
 /* ヘッダー＝すりガラス */
@@ -371,7 +371,7 @@ h2 { font-size: clamp(1.4rem, 3.4vw, 2rem); letter-spacing: .06em; }
 .card { background: transparent; border: 0; border-radius: 0; }
 .card .ph { border-radius: var(--radius); overflow: hidden; }
 .card .body { padding: 14px 2px 6px; }
-.card-en { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .18em; color: #8e8e93; margin-bottom: 2px; }
+.card-en { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .18em; color: #6b6b70; margin-bottom: 2px; }
 .card h3 { font-size: 1.02rem; margin-bottom: .3em; }
 .grid-3 { gap: 28px 24px; }
 .card:hover .ph { transform: none; filter: brightness(1.06); }
@@ -397,7 +397,7 @@ h2 { font-size: clamp(1.4rem, 3.4vw, 2rem); letter-spacing: .06em; }
 
 /* お知らせ・地図・タグ */
 .news-list li { border-bottom-color: var(--line); padding: 18px 0; }
-.news-list time { color: #8e8e93; }
+.news-list time { color: #6b6b70; }
 .tag { background: var(--bg); color: var(--ink-soft); }
 .map-ph { background: repeating-linear-gradient(0deg, transparent 0 38px, rgba(0,0,0,.05) 38px 39px), repeating-linear-gradient(90deg, transparent 0 38px, rgba(0,0,0,.05) 38px 39px), var(--bg); border-color: var(--line); }
 .map-ph path { stroke: #b9b9be; } .map-ph circle { fill: var(--ink); } .map-ph text { fill: var(--ink); }
@@ -412,7 +412,7 @@ h2 { font-size: clamp(1.4rem, 3.4vw, 2rem); letter-spacing: .06em; }
 .steps li.active, .cal button.day.sel, .timeline .dot, .legend .l-sel::before { background: var(--ink); border-color: var(--ink); }
 .cal button.day small { color: var(--ink-soft); }
 .cal button.day.in-range { background: #e6e6ea; border-color: #cfcfd4; }
-.cal button.day.full { background: #f0f0f2; color: #9a9a9f; }
+.cal button.day.full { background: #f0f0f2; color: #6a6a70; }
 .admin-top { background: var(--black); }
 .admin-tabs button.on { color: var(--ink); border-bottom-color: var(--ink); }
 .flow-steps li.on { border-color: var(--ink); }
