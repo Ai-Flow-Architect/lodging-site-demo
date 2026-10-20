@@ -50,7 +50,13 @@
     '<li><a href="line-flow.html">LINEで相談</a></li>' +
     "<li>予約サイト（一休など）にも掲載予定</li></ul></div>" +
     "</div>" +
-    '<p class="note">このサイトは提案用のデモです。施設名・住所・料金・画像はすべて架空のもので、実在の施設とは関係ありません。写真とロゴは仮の図形で、あとから差し替えられます。</p>' +
+    '<p class="note">このサイトは提案用のデモです。施設名・住所・料金はすべて架空のもので、実在の施設とは関係ありません。写真はフリー素材のイメージ写真、ロゴは仮の図形で、あとから差し替えられます。</p>' +
+    '<p class="credits">写真の出典：'
+    + '外観 Alex Robert／寝室 World Travel Adventures／テラス Sonja Guina（StockSnap・CC0）、'
+    + 'キッチン・アプローチ（rawpixel・CC0）、'
+    + 'リビング <a href="https://www.flickr.com/photos/25186605@N04/2888118022" rel="noopener">Jeremy Levine Design</a>・'
+    + '露天風呂 <a href="https://www.flickr.com/photos/42244487@N04/6435581577" rel="noopener">ThinkGeoEnergy</a>'
+    + '（Flickr・<a href="https://creativecommons.org/licenses/by/2.0/" rel="noopener">CC BY 2.0</a>）</p>' +
     "</div></footer>";
 
   var ribbon = '<div class="demo-ribbon" role="note">デモサイト（架空の施設）</div>';
