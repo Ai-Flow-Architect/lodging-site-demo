@@ -56,7 +56,8 @@
     + 'キッチン・アプローチ（rawpixel・CC0）、'
     + 'リビング <a href="https://www.flickr.com/photos/25186605@N04/2888118022" rel="noopener">Jeremy Levine Design</a>・'
     + '露天風呂 <a href="https://www.flickr.com/photos/42244487@N04/6435581577" rel="noopener">ThinkGeoEnergy</a>'
-    + '（Flickr・<a href="https://creativecommons.org/licenses/by/2.0/" rel="noopener">CC BY 2.0</a>）</p>' +
+    + '（Flickr・<a href="https://creativecommons.org/licenses/by/2.0/" rel="noopener">CC BY 2.0</a>）。'
+    + 'トップの映像 <a href="https://mixkit.co/" rel="noopener">Mixkit</a>（Mixkit Stock Video Free License）</p>' +
     "</div></footer>";
 
   var ribbon = '<div class="demo-ribbon" role="note">デモサイト（架空の施設）</div>';
